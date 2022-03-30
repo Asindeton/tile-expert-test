@@ -1,0 +1,211 @@
+header {
+  width: 100vw;
+  background-color: var(--blue-color);
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    padding: 19px 20px 18px;
+    max-width: 1920px;
+    width: 100%;
+    align-items: center;
+  }
+  .logo {
+    position: relative;
+    width: min-content;
+    svg.cursor {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate(50%, 50%);
+    }
+  }
+  nav {
+    position: relative;
+    align-items: center;
+    .nav-text {
+      position: relative;
+      margin-right: 40px;
+      &.have-child {
+        padding-right: 10px;
+
+        &::after {
+          content: "";
+          right: 0px;
+          top: 50%;
+          transform: translate(100%, -50%);
+          position: absolute;
+          border: 5px solid transparent; /* Прозрачные границы */
+          border-top: 4px solid var(--white-color);
+        }
+      }
+    }
+  }
+  .icon-area-wrapper {
+    align-items: center;
+    .icon {
+      align-items: center;
+    }
+    .search {
+      margin-right: 30px;
+    }
+  }
+  .user-info-wrapper {
+    align-items: center;
+    justify-content: flex-end;
+    .email-icon {
+      margin-right: 27px;
+    }
+    .notification-icon {
+      position: relative;
+      margin-right: 22px;
+      span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background-color: var(--red-color);
+        padding: 2px;
+      }
+    }
+    .avatar-icon img {
+      border-radius: 50%;
+    }
+  }
+}
+.burger-trigger {
+  display: none;
+}
+@media screen and (max-width: 1150px) {
+  header {
+    nav {
+      align-items: center;
+      .nav-text {
+        position: relative;
+        margin-right: 20px;
+        &.have-child {
+          padding-right: 5px;
+        }
+      }
+    }
+    .central-row {
+      justify-content: center;
+    }
+    .icon-area-wrapper {
+      .search {
+        margin-left: 5px;
+        margin-right: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  header {
+    .wrapper {
+      display: grid;
+      grid-template-columns: 0.5fr 5fr 0.5fr;
+      padding: 20px 23px 23px;
+      align-items: center;
+      row-gap: 23px;
+    }
+    nav.mobile {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      left: 0;
+      top: 122px;
+      background-color: var(--blue-color);
+      padding: 25px;
+      height: 100vh;
+      transition: all 1s;
+      &.hidden {
+        transform: translateX(-100%);
+      }
+      .nav-text {
+        margin-bottom: 10px;
+        margin-right: 0px;
+        align-items: end;
+        padding-right: 5px;
+      }
+    }
+    .icon-area-wrapper {
+      .search {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    .user-info-wrapper {
+      justify-content: space-around;
+    }
+  }
+  .burger-trigger {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    width: 20px;
+    height: 13px;
+    z-index: 2;
+    span {
+      content: "";
+      position: absolute;
+      background-color: var(--white-color);
+      width: 100%;
+      height: 2px;
+      top: 5.5px;
+      -webkit-transition: all var(--hover-animation-duration);
+      transition: all var(--hover-animation-duration);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: var(--white-color);
+      width: 100%;
+      height: 2px;
+      left: 0;
+      top: 0;
+      -webkit-transition: all var(--hover-animation-duration);
+      transition: all var(--hover-animation-duration);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: var(--white-color);
+      width: 100%;
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      -webkit-transition: all var(--hover-animation-duration);
+      transition: all var(--hover-animation-duration);
+    }
+  }
+  .burger-trigger.active {
+    span {
+      transform: scale(0);
+    }
+    &::before {
+      transform: rotate(45deg);
+      top: 5.5px;
+    }
+    &::after {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      bottom: 5.5px;
+    }
+  }
+}
+
+.search-field {
+  position: absolute;
+  background-color: wheat;
+  width: 0;
+  right: -23px;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 2s;
+  &.active {
+    opacity: 1;
+    width: calc(100% + 23px);
+    pointer-events: all;
+  }
+}

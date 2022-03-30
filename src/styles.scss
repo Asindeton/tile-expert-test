@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./assets/font/esqadero/esqadero.css");
+:root {
+  --blue-color: #4876c3;
+  --white-color: #ffffff;
+  --red-color: #db4437;
+  --hover-animation-duration: 0.5s;
+}
+
+.flex {
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
+h1 {
+  font-size: 20px;
+  font-family: "Esqadero FF CY 4F";
+  color: var(--white-color);
+  &:first-letter {
+    color: var(--red-color);
+  }
+}
+.nav-text {
+  font-size: 13px;
+  font-family: "Esqadero FF CY 4F";
+  color: var(--white-color);
+}
+.small-number {
+  font-size: 8px;
+  line-height: 1;
+  font-family: "Esqadero FF CY 4F";
+  color: var(--white-color);
+}
+
+@media screen and (max-width: 1150px) {
+  h1 {
+    font-size: 16px;
+    font-family: "Esqadero FF CY 4F";
+    color: var(--white-color);
+    &:first-letter {
+      color: var(--red-color);
+    }
+  }
+  .nav-text {
+    font-size: 12px;
+    font-family: "Esqadero FF CY 4F";
+    color: var(--white-color);
+  }
+  .small-number {
+    font-size: 8px;
+    line-height: 1;
+    font-family: "Esqadero FF CY 4F";
+    color: var(--white-color);
+  }
+}

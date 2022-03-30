@@ -1,0 +1,82 @@
+<header>
+  <div class="wrapper">
+    <div
+      class="burger-trigger"
+      [class.active]="activeBurger"
+      (click)="burgerMenuToggle()"
+    >
+      <span></span>
+    </div>
+    <div class="logo">
+      <h1>{{ logoTitle | uppercase }}</h1>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="13.392"
+        height="13.873"
+        viewBox="179.588 20.124 13.392 13.873"
+        class="cursor"
+      >
+        <path
+          d="M185.668 33.997a.66.66 0 0 0 .103-.008.655.655 0 0 0 .535-.588l.563-5.735 5.535-.583a.65.65 0 0 0 .568-.554.67.67 0 0 0-.37-.712l-12.11-5.634a.622.622 0 0 0-.23-.058.63.63 0 0 0-.486.194.676.676 0 0 0-.188.47c0 .09.018.184.056.27l5.44 12.546a.65.65 0 0 0 .38.358.619.619 0 0 0 .204.034Zm4.227-7.984-3.676.387a.653.653 0 0 0-.572.594l-.374 3.807-3.769-8.692 8.39 3.904Z"
+          fill="rgba(219, 68, 55, 1)"
+          fill-rule="evenodd"
+          data-name="Cursor. Attribute as Amit Jakhu from Flaticon.com"
+        />
+      </svg>
+    </div>
+    <div class="flex-row central-row">
+      <nav
+        [class.flex-row]="!isMobile"
+        [class.mobile]="isMobile"
+        [class.hidden]="isMobile && !activeBurger"
+      >
+        <div class="nav-text have-child">Ссылки</div>
+        <div class="nav-text">Контакты</div>
+        <div class="nav-text have-child">Теги</div>
+        <div class="nav-text have-child">Просьбы</div>
+        <div class="nav-text have-child">Избранное</div>
+        <div class="nav-text have-child">Посещения</div>
+        <div class="search-field" [class.active]="searchFieldIsActive">
+          search
+        </div>
+      </nav>
+      <div class="flex-row icon-area-wrapper">
+        <div class="icon search" (click)="searchFieldToggle()">
+          <img src="../../assets/icons/ic_search_black.png" alt="search" />
+        </div>
+        <div class="icon" *ngIf="!isMobile">
+          <img src="../../assets/icons/ic_add_circle_b.png" alt="add btn" />
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isMobile"></div>
+    <div class="flex-row user-info-wrapper">
+      <div class="email-icon">
+        <img
+          src="../../assets/icons/ic_mail_outline.png"
+          alt="mail"
+          width="20px"
+          height="16px"
+        />
+      </div>
+      <div class="notification-icon">
+        <img
+          src="../../assets/icons/ic_notification.png"
+          alt="notification"
+          alt="mail"
+          width="16px"
+          height="20px"
+        />
+        <span class="counter small-number">18</span>
+      </div>
+      <div class="avatar-icon">
+        <img
+          src="../../assets/image/hd-high-resolution-nature-1920x1200-wallpaper-preview.jpeg"
+          alt="avatar"
+          width="32px"
+          height="32px"
+        />
+      </div>
+    </div>
+  </div>
+</header>
