@@ -1,9 +1,10 @@
 <header>
-  <div class="wrapper">
+  <div class="wrapper" (click)="searchFieldToggle($event)" #headerWrapper>
     <div
       class="burger-trigger"
       [class.active]="activeBurger"
       (click)="burgerMenuToggle()"
+      [class.hidden]="searchFieldIsActive"
     >
       <span></span>
     </div>
@@ -36,13 +37,27 @@
         <div class="nav-text have-child">Просьбы</div>
         <div class="nav-text have-child">Избранное</div>
         <div class="nav-text have-child">Посещения</div>
-        <div class="search-field" [class.active]="searchFieldIsActive">
-          search
+        <div class="search-field flex-row" [class.active]="searchFieldIsActive">
+          <div class="flex-row search-field-item-wrapper">
+            <img
+              src="../../assets/icons/ic_search_black (1).png"
+              alt="search"
+              width="18px"
+              height="18px"
+            />
+            <input type="text" placeholder="Поиск" (focus)="inputFocus()" />
+          </div>
+          <button>{{ "найти" | uppercase }}</button>
         </div>
+        <app-search-filter *ngIf="searchInputFocus"></app-search-filter>
       </nav>
       <div class="flex-row icon-area-wrapper">
-        <div class="icon search" (click)="searchFieldToggle()">
-          <img src="../../assets/icons/ic_search_black.png" alt="search" />
+        <div class="icon search">
+          <img
+            src="../../assets/icons/ic_search_black.png"
+            alt="search"
+            #search
+          />
         </div>
         <div class="icon" *ngIf="!isMobile">
           <img src="../../assets/icons/ic_add_circle_b.png" alt="add btn" />
@@ -50,7 +65,7 @@
       </div>
     </div>
     <div *ngIf="isMobile"></div>
-    <div class="flex-row user-info-wrapper">
+    <div class="flex-row user-info-wrapper" *ngIf="showInfoWrapper">
       <div class="email-icon">
         <img
           src="../../assets/icons/ic_mail_outline.png"
